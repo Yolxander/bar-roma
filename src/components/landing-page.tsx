@@ -1,10 +1,10 @@
 "use client"
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import Link from 'next/link'
-import { ChevronDown, ArrowRight, Facebook, Instagram, Twitter, X } from 'lucide-react'
+import { ChevronDown, ArrowRight } from 'lucide-react'
 import Image from 'next/image'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useInView } from 'framer-motion'
 import { Cormorant_Garamond, Cinzel } from 'next/font/google'
 
 const cormorantGaramond = Cormorant_Garamond({
@@ -18,9 +18,18 @@ const cinzel = Cinzel({
 })
 
 function Footer() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, amount: 0.3 })
+
   return (
       <footer className="bg-[#f7f0d6] text-[#000000] py-16">
-        <div className="container mx-auto px-4">
+        <motion.div
+            ref={ref}
+            initial={{ opacity: 0, y: 50 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+            transition={{ duration: 0.5 }}
+            className="container mx-auto px-4"
+        >
           <div className="text-center mb-12">
             <h2 className={`text-4xl md:text-6xl mb-6 ${cinzel.className}`}>DINING IN TORONTO</h2>
           </div>
@@ -46,23 +55,26 @@ function Footer() {
             <p className={`${cormorantGaramond.className}`}>BAR ROMA GROUP MEDIA All Rights Reserved</p>
             <p className={`${cormorantGaramond.className}`}>Crafted with passion in the heart of Toronto</p>
           </div>
-        </div>
+        </motion.div>
       </footer>
   )
 }
 
-
 function ExecutiveChef() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, amount: 0.3 })
+
   return (
-      <section className="min-h-screen bg-[#42482b] text-[#f7f0d6] flex items-center py-16">
+      <section className="min-h-screen bg-[#42482b] text-[#f7f0d6] flex items-center">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-center">
-            <motion.div
-                className="md:w-1/2 mb-8 md:mb-0 md:pr-8"
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-            >
+          <motion.div
+              ref={ref}
+              initial={{ opacity: 0, y: 50 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+              transition={{ duration: 0.5 }}
+              className="flex flex-col md:flex-row items-center"
+          >
+            <div className="md:w-1/2 mb-8 md:mb-0 md:pr-8">
               <div className="grid grid-cols-1 gap-8">
                 <Image
                     src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202024-10-10%20at%203.39.40%E2%80%AFPM-oLzypXSPmfYT4zLwjIe198nVU6daJQ.png"
@@ -72,13 +84,8 @@ function ExecutiveChef() {
                     className="rounded-lg shadow-lg"
                 />
               </div>
-            </motion.div>
-            <motion.div
-                className="md:w-1/2"
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-            >
+            </div>
+            <div className="md:w-1/2">
               <h3 className={`text-sm uppercase tracking-wider mb-2 ${cinzel.className}`}>Bar Roma Specialties</h3>
               <h2 className={`text-4xl md:text-5xl mb-6 ${cinzel.className}`}>Culinary Delights</h2>
               <div className={`text-lg space-y-6 ${cormorantGaramond.className}`}>
@@ -97,24 +104,28 @@ function ExecutiveChef() {
                   </Link>
                 </div>
               </div>
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
         </div>
       </section>
   )
 }
 
 function NewSection() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, amount: 0.3 })
+
   return (
-      <section className="min-h-screen bg-[#42482b] text-[#f7f0d6] flex items-center py-16">
+      <section className="min-h-screen bg-[#42482b] text-[#f7f0d6] flex items-center pb-12">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row-reverse items-center">
-            <motion.div
-                className="md:w-1/2 mb-8 md:mb-0 md:pl-8"
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-            >
+          <motion.div
+              ref={ref}
+              initial={{ opacity: 0, y: 50 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+              transition={{ duration: 0.5 }}
+              className="flex flex-col md:flex-row-reverse items-center"
+          >
+            <div className="md:w-1/2 mb-8 md:mb-0 md:pl-8">
               <div className="grid grid-cols-1 gap-8">
                 <Image
                     src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202024-10-10%20at%203.39.20%E2%80%AFPM-GcdF4t7RKqjfYS4e18X69V5E3XDzvX.png"
@@ -124,13 +135,8 @@ function NewSection() {
                     className="rounded-lg shadow-lg"
                 />
               </div>
-            </motion.div>
-            <motion.div
-                className="md:w-1/2"
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-            >
+            </div>
+            <div className="md:w-1/2">
               <h3 className={`text-sm uppercase tracking-wider mb-2 ${cinzel.className}`}>Signature Dish</h3>
               <h2 className={`text-4xl md:text-5xl mb-6 ${cinzel.className}`}>Pomegranate Chicken</h2>
               <div className={`text-lg space-y-6 ${cormorantGaramond.className}`}>
@@ -149,26 +155,28 @@ function NewSection() {
                   </Link>
                 </div>
               </div>
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
         </div>
       </section>
   )
 }
 
-
-
 function SignatureDish() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, amount: 0.3 })
+
   return (
       <section className="min-h-screen bg-[#000000] text-[#f7f0d6] flex items-center py-16">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-center">
-            <motion.div
-                className="md:w-1/2 mb-8 md:mb-0 md:pr-8"
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-            >
+          <motion.div
+              ref={ref}
+              initial={{ opacity: 0, y: 50 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+              transition={{ duration: 0.5 }}
+              className="flex flex-col md:flex-row items-center"
+          >
+            <div className="md:w-1/2 mb-8 md:mb-0 md:pr-8">
               <h3 className={`text-sm uppercase tracking-wider mb-2 ${cinzel.className}`}>Signature dish</h3>
               <h2 className={`text-4xl md:text-5xl mb-4 ${cinzel.className}`}>Whitefish fillet</h2>
               <p className={`text-lg mb-6 ${cormorantGaramond.className}`}>
@@ -180,13 +188,8 @@ function SignatureDish() {
               >
                 View menu <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
-            </motion.div>
-            <motion.div
-                className="md:w-1/2"
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.2  }}
-            >
+            </div>
+            <div className="md:w-1/2">
               <Image
                   src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202024-10-10%20at%203.28.25%E2%80%AFPM-uikruYcPUtTf5ume5XoFtfCloHhvBx.png"
                   alt="Signature cocktail with grilled pineapple garnish"
@@ -194,19 +197,23 @@ function SignatureDish() {
                   height={400}
                   className="rounded-lg shadow-lg"
               />
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
         </div>
       </section>
   )
 }
 
 function NextSection() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, amount: 0.3 })
+
   return (
       <section id="next-section" className="min-h-screen bg-[#f7f0d6] text-[#000000] flex flex-col justify-center items-center px-4 py-16">
         <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            ref={ref}
+            initial={{ opacity: 0, y: 50 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
             transition={{ duration: 0.5 }}
             className="max-w-4xl mx-auto text-center"
         >
@@ -236,7 +243,7 @@ export function LandingPageComponent() {
   return (
       <div className={`${cormorantGaramond.className}`}>
         <div className="min-h-screen bg-[url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202024-10-10%20at%202.06.42%E2%80%AFPM-ErQIjDXO6K2eGaOSUAlRlNRyApNImU.png')] bg-cover bg-center text-[#f7f0d6]">
-          <div className="min-h-screen bg-[#000000] bg-opacity-70 backdrop-blur-sm flex flex-col">
+          <div className="min-h-screen bg-[#000000] bg-opacity-50 backdrop-blur-sm flex flex-col">
             <header className="p-6 flex justify-between items-center">
               <Link href="/" aria-label="Home">
                 <motion.div
@@ -264,7 +271,7 @@ export function LandingPageComponent() {
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.3 }}
+                    transition={{ duration: 0.5, delay:  0.3 }}
                 >
                   <Link href="/reservations" className="hover:text-[#bdbca0] transition-colors">RESERVATIONS</Link>
                 </motion.div>
@@ -304,7 +311,7 @@ export function LandingPageComponent() {
             </header>
             <main className="flex-grow flex flex-col items-center justify-center text-center px-4 mb-12">
               <motion.h1
-                  className={`text-4xl md:text-7xl mb-6 leading-tight font-bold ${cinzel.className}`}
+                  className={`text-4xl md:text-8xl mb-6 leading-tight  ${cinzel.className}`}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.5 }}
@@ -312,7 +319,7 @@ export function LandingPageComponent() {
                 BAR ROMA
               </motion.h1>
               <motion.p
-                  className="max-w-md mb-8 md:text-xl text-[#dfddc1]"
+                  className="md:max-w-lg max-w-md mb-8 md:text-4xl text-[#dfddc1]"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.6 }}
