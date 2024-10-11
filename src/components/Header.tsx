@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Cinzel } from 'next/font/google'
+import { useState, useEffect } from 'react'
 
 const cinzel = Cinzel({
     subsets: ['latin'],
@@ -15,8 +16,18 @@ interface HeaderProps {
 }
 
 export default function Header({ toggleMenu, isMenuOpen, genericHamburgerLine }: HeaderProps) {
+    const [isMenuPage, setIsMenuPage] = useState(false)
+
+    useEffect(() => {
+        setIsMenuPage(window.location.pathname === '/menu')
+    }, [])
+
+    const headerStyle = isMenuPage
+        ? "p-6 md:py-[100px] flex justify-between items-center bg-[url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202024-10-10%20at%202.06.25%E2%80%AFPM-AFl4DsWpjdsxkVRPN6cDlyuLCqL39b.png')] bg-cover bg-center text-[#f7f0d6]"
+        : "p-6 flex justify-between items-center bg-transparent text-[#f7f0d6]"
+
     return (
-        <header className="p-6 flex justify-between items-center">
+        <header className={headerStyle}>
             <Link href="/" aria-label="Home">
                 <motion.div
                     initial={{ opacity: 0, scale: 0.5 }}
@@ -28,7 +39,7 @@ export default function Header({ toggleMenu, isMenuOpen, genericHamburgerLine }:
                         alt="Bar Roma Logo"
                         width={80}
                         height={80}
-                        className="brightness-200"
+                        className={isMenuPage ? "brightness-200" : "brightness-100"}
                     />
                 </motion.div>
             </Link>
