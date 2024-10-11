@@ -1,11 +1,13 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Cinzel, Cormorant_Garamond } from 'next/font/google'
 import { AnimatePresence, motion } from "framer-motion"
 import Link from "next/link"
+import { ChevronDown } from 'lucide-react'
 import Header from '../../components/Header'
 import Footer from "@/components/Footer";
+
 const cinzel = Cinzel({
     subsets: ['latin'],
     weight: ['400', '700'],
@@ -189,7 +191,9 @@ const menuItems: MenuItem[] = [
 
 export default function MenuPage() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
-    const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
+    const [selectedCategories, setSelectedCategories] = useState<string[]>([])
+    const [isMobile, setIsMobile] = useState(false)
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 
     const genericHamburgerLine = `h-1 w-6 my-1 rounded-full bg-[#f7f0d6] transition ease transform duration-300`
     const toggleMenu = () => {
@@ -198,9 +202,30 @@ export default function MenuPage() {
 
     const categories = Array.from(new Set(menuItems.map(item => item.category)))
 
-    const filteredItems = selectedCategory
-        ? menuItems.filter(item => item.category === selectedCategory)
+    const filteredItems = selectedCategories.length > 0
+        ? menuItems.filter(item => selectedCategories.includes(item.category))
         : menuItems
+
+    const toggleCategory = (category: string) => {
+        setSelectedCategories(prev =>
+            prev.includes(category)
+                ? prev.filter(c => c !== category)
+                : [...prev, category]
+        )
+    }
+
+    useEffect(() => {
+        const checkIsMobile = () => {
+            setIsMobile(window.innerWidth < 768)
+        }
+
+        checkIsMobile()
+        window.addEventListener('resize', checkIsMobile)
+
+        return () => {
+            window.removeEventListener('resize', checkIsMobile)
+        }
+    }, [])
 
     return (
         <div className={`min-h-screen bg-[#000000] text-[#f7f0d6] z-1 ${cormorantGaramond.className}`}>
@@ -210,34 +235,65 @@ export default function MenuPage() {
             <main className="container mx-auto px-4 py-8">
                 <h1 className={`text-4xl md:text-5xl text-center mb-8 ${cinzel.className}`}>Our Menu</h1>
 
-                <div className="mb-8 flex flex-wrap justify-center gap-4">
-                    <button
-                        onClick={() => setSelectedCategory(null)}
-                        className={`px-4 py-2 rounded ${selectedCategory === null ? 'bg-[#f7f0d6] text-[#000000]' : 'bg-[#000000] text-[#f7f0d6] border border-[#f7f0d6]'}`}
-                    >
-                        All
-                    </button>
-                    {categories.map((category) => (
+                {isMobile ? (
+                    <div className="mb-8 relative">
                         <button
-                            key={category}
-                            onClick={() => setSelectedCategory(category)}
-                            className={`px-4 py-2 rounded ${selectedCategory === category ? 'bg-[#f7f0d6] text-[#000000]' : 'bg-[#000000] text-[#f7f0d6] border border-[#f7f0d6]'}`}
+                            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                            className="w-full px-4 py-2 bg-[#000000] text-[#f7f0d6] border border-[#f7f0d6] rounded flex justify-between items-center"
                         >
-                            {category}
+                            {selectedCategories.length > 0 ? selectedCategories.join(', ') : 'Select categories'}
+                            <ChevronDown className={`ml-2 h-4 w-4 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
                         </button>
-                    ))}
-                </div>
+                        {isDropdownOpen && (
+                            <div className="absolute z-10 w-full mt-1 bg-[#000000] border border-[#f7f0d6] rounded">
+                                {categories.map((category) => (
+                                    <label key={category} className="flex items-center px-4 py-2">
+                                        <input
+                                            type="checkbox"
+                                            checked={selectedCategories.includes(category)}
+                                            onChange={() => toggleCategory(category)}
+                                            className="mr-2"
+                                        />
+                                        {category}
+                                    </label>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                ) : (
+                    <div className="mb-8 flex flex-wrap justify-center gap-4">
+                        {categories.map((category) => (
+                            <button
+                                key={category}
+                                onClick={() => toggleCategory(category)}
+                                className={`px-4 py-2 rounded ${selectedCategories.includes(category) ? 'bg-[#f7f0d6] text-[#000000]' : 'bg-[#000000] text-[#f7f0d6] border border-[#f7f0d6]'}`}
+                            >
+                                {category}
+                            </button>
+                        ))}
+                    </div>
+                )}
 
                 <div className="space-y-8">
-                    {filteredItems.map((item, index) => (
-                        <div key={index} className="flex justify-between items-start">
-                            <div>
-                                <h3 className="text-xl font-semibold">{item.name}</h3>
-                                <p>{item.description}</p>
+                    {categories.map((category) => {
+                        const categoryItems = filteredItems.filter(item => item.category === category)
+                        if (categoryItems.length === 0) return null
+
+                        return (
+                            <div key={category}>
+                                <h2 className={`text-3xl mb-6 ${cinzel.className}`}>{category}</h2>
+                                {categoryItems.map((item, index) => (
+                                    <div key={index} className="flex justify-between items-start mb-4">
+                                        <div>
+                                            <h3 className="text-xl font-semibold">{item.name}</h3>
+                                            <p>{item.description}</p>
+                                        </div>
+                                        <span className="text-lg">{item.price}</span>
+                                    </div>
+                                ))}
                             </div>
-                            <span className="text-lg">{item.price}</span>
-                        </div>
-                    ))}
+                        )
+                    })}
                 </div>
             </main>
 
