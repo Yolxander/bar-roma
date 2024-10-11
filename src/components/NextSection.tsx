@@ -26,14 +26,14 @@ export default function NextSection() {
                 className="max-w-4xl mx-auto text-center"
             >
                 <h2 className={`text-4xl md:text-5xl mb-8 ${cinzel.className}`}>
-                    Exceptional dining at exceptional locations.
+                    Experience the modern twist on Roman cuisine.
                 </h2>
                 <div className={`text-lg  md:text-xl space-y-6 ${cormorantGaramond.className}`}>
                     <p>
-                        Foodie heaven awaits you in Toronto, where five-star restaurants sit side by side with traditional taverns, serving the freshest and tastiest cuisine. Our selection of signature restaurants offers contemporary Canadian restaurants serving modern interpretations of traditional
+                        Step into Bar Roma, where the heart of Italy meets modern Toronto. Enjoy a vibrant and lively dining experience with handmade pasta, wood-fired pizzas, and an extensive selection of Italian wines, all in a warm, cozy atmosphere.
                     </p>
                     <p>
-                        Canadian dishes, as well as restaurants serving international cuisine made with local ingredients in a number of the most memorable locations you can imagine.
+                        From the rich flavors of traditional dishes like <em>Cacio e Pepe</em> to creative cocktails like the <em>Blackberry Mezcal Sour</em>, Bar Roma blends classic tastes with a contemporary flair, perfect for both casual dining and special occasions.
                     </p>
                 </div>
             </motion.div>

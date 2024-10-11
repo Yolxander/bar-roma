@@ -19,7 +19,7 @@ export default function MenuPage() {
     const genericHamburgerLine = `h-1 w-6 my-1 rounded-full bg-[#f7f0d6] transition ease transform duration-300`
 
     return (
-        <div className={`min-h-screen bg-[#000000] text-[#f7f0d6] ${cormorantGaramond.className}`}>
+        <div className={`min-h-screen bg-[#000000] text-[#f7f0d6] z-1 ${cormorantGaramond.className}`}>
             <Header toggleMenu={toggleMenu} isMenuOpen={isMenuOpen} genericHamburgerLine={genericHamburgerLine} />
 
             <main className="container mx-auto px-4 py-8">

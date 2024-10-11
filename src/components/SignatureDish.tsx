@@ -30,10 +30,10 @@ export default function SignatureDish() {
                     className="flex flex-col md:flex-row items-center"
                 >
                     <div className="md:w-1/2 mb-8 md:mb-0 md:pr-8">
-                        <h3 className={`text-sm uppercase tracking-wider mb-2 ${cinzel.className}`}>Signature dish</h3>
-                        <h2 className={`text-4xl md:text-5xl mb-4 ${cinzel.className}`}>Whitefish fillet</h2>
+                        <h3 className={`text-sm uppercase tracking-wider mb-2 ${cinzel.className}`}>Signature Cocktail</h3>
+                        <h2 className={`text-4xl md:text-5xl mb-4 ${cinzel.className}`}>Pineapple Caipirinha</h2>
                         <p className={`text-lg mb-6 ${cormorantGaramond.className}`}>
-                            Slowly cooked in olive oil, dark fish sauce, olive pesto and toasted hazelnuts, cream of carrot and parsley, cauliflower fried in butter, dill oil.
+                            A refreshing twist on the classic caipirinha, this cocktail brings tropical vibes with every sip. Fresh pineapple meets zesty lime and sugarcane rum for a new wave of flavor, topped with a grilled pineapple garnish for the perfect finish.
                         </p>
                         <Link
                             href="/menu"

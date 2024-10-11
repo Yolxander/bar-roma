@@ -23,7 +23,7 @@ export default function Header({ toggleMenu, isMenuOpen, genericHamburgerLine }:
     }, [])
 
     const headerStyle = isMenuPage
-        ? "p-6 md:py-[100px] flex justify-between items-center bg-[url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202024-10-10%20at%202.06.25%E2%80%AFPM-AFl4DsWpjdsxkVRPN6cDlyuLCqL39b.png')] bg-cover bg-center text-[#f7f0d6]"
+        ? "p-6 md:pt-[50px] md:pb-[150px] flex justify-between items-center bg-[url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202024-10-10%20at%202.06.25%E2%80%AFPM-AFl4DsWpjdsxkVRPN6cDlyuLCqL39b.png')] bg-cover bg-center text-[#f7f0d6]"
         : "p-6 flex justify-between items-center bg-transparent text-[#f7f0d6]"
 
     return (
