@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import {useRef, useState} from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
@@ -18,6 +18,9 @@ const cinzel = Cinzel({
 export default function ExecutiveChef() {
     const ref = useRef(null)
     const isInView = useInView(ref, { once: true, amount: 0.3 })
+    const [showMessage, setShowMessage] = useState(false)
+
+    const toggleMessage = () => setShowMessage(!showMessage)
 
     return (
         <section className="min-h-screen bg-[#42482b] text-[#f7f0d6] flex items-center py-6 md:py-0">
@@ -51,17 +54,38 @@ export default function ExecutiveChef() {
                                 Join us for happy hour from 5-7pm and experience these culinary masterpieces alongside our carefully curated drink selection.
                             </p>
                             <div className="mt-8">
-                                <Link
-                                    href="/reservations"
+                                <button
+                                    onClick={toggleMessage}
                                     className={`inline-flex items-center text-lg hover:text-[#bdbca0] transition-colors ${cinzel.className}`}
                                 >
                                     Make a reservation <ArrowRight className="ml-2 h-4 w-4" />
-                                </Link>
+                                </button>
                             </div>
                         </div>
                     </div>
                 </motion.div>
             </div>
+
+            {showMessage && (
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center text-white z-[103]"
+                >
+                    <div className="p-6 bg-[#333] rounded-lg text-center">
+                        <p className="text-lg mb-4">Please contact Sempre Studios for more information on the available booking options.</p>
+                        <p className="text-lg mb-4">Email: hello@semprestudios.com</p>
+                        <button
+                            className="bg-[#f7f0d6] text-black px-4 py-2 rounded"
+                            onClick={toggleMessage}
+                        >
+                            Close
+                        </button>
+                    </div>
+                </motion.div>
+            )}
         </section>
     )
 }

@@ -3,6 +3,7 @@ import { ChevronDown } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { Cinzel } from 'next/font/google'
 import Header from './Header'
+import {useState} from "react";
 
 const cinzel = Cinzel({
     subsets: ['latin'],
@@ -16,6 +17,9 @@ interface HeroSectionProps {
 }
 
 export default function HeroSection({ toggleMenu, isMenuOpen, genericHamburgerLine }: HeroSectionProps) {
+    const [showMessage, setShowMessage] = useState(false)
+
+    const toggleMessage = () => setShowMessage(!showMessage)
     return (
         <div className="min-h-screen bg-[url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202024-10-10%20at%202.06.42%E2%80%AFPM-ErQIjDXO6K2eGaOSUAlRlNRyApNImU.png')] bg-cover bg-center text-[#f7f0d6]">
             <div className="min-h-screen bg-[#000000] bg-opacity-50 backdrop-blur-sm flex flex-col">
@@ -42,12 +46,12 @@ export default function HeroSection({ toggleMenu, isMenuOpen, genericHamburgerLi
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.7 }}
                     >
-                        <Link
-                            href="/reservations"
+                        <button
+                            onClick={toggleMessage}
                             className={`border border-[#f7f0d6] text-[#f7f0d6] px-8 py-3 text-sm hover:bg-[#42482b] hover:border-[#42482b] hover:text-[#f7f0d6] transition-colors ${cinzel.className}`}
                         >
                             RESERVE A TABLE
-                        </Link>
+                        </button>
                     </motion.div>
                 </main>
                 <div className="p-6 text-center">
@@ -67,6 +71,27 @@ export default function HeroSection({ toggleMenu, isMenuOpen, genericHamburgerLi
                     </motion.div>
                 </div>
             </div>
+
+            {showMessage && (
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center text-white z-[103]"
+                >
+                    <div className="p-6 bg-[#333] rounded-lg text-center">
+                        <p className="text-lg mb-4">Please contact Sempre Studios for more information on the available booking options.</p>
+                        <p className="text-lg mb-4">Email: hello@semprestudios.com</p>
+                        <button
+                            className="bg-[#f7f0d6] text-black px-4 py-2 rounded"
+                            onClick={toggleMessage}
+                        >
+                            Close
+                        </button>
+                    </div>
+                </motion.div>
+            )}
         </div>
     )
 }

@@ -64,6 +64,13 @@ export default function Header({ toggleMenu, isMenuOpen, genericHamburgerLine }:
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                >
+                    <button className="hover:text-[#bdbca0] transition-colors" onClick={toggleMessage}>GALLERY</button>
+                </motion.div>
+                <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.4 }}
                 >
                     <button className="hover:text-[#bdbca0] transition-colors" onClick={toggleMessage}>ABOUT</button>
@@ -109,6 +116,7 @@ export default function Header({ toggleMenu, isMenuOpen, genericHamburgerLine }:
                             <Link href="/" className="hover:text-[#bdbca0] transition-colors" onClick={toggleMenu}>HOME</Link>
                             <Link href="/menu" className="hover:text-[#bdbca0] transition-colors" onClick={toggleMenu}>MENU</Link>
                             <button className="hover:text-[#bdbca0] transition-colors" onClick={toggleMessage}>RESERVATIONS</button>
+                            <button className="hover:text-[#bdbca0] transition-colors" onClick={toggleMessage}>GALLERY</button>
                             <button className="hover:text-[#bdbca0] transition-colors" onClick={toggleMessage}>ABOUT</button>
                         </nav>
                     </motion.div>
