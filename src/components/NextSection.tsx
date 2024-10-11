@@ -33,7 +33,7 @@ export default function NextSection() {
                         Step into Bar Roma, where traditional Roman flavors are reimagined with a modern twist. Savor handmade dishes like the rich and creamy <em>Cacio e Pepe</em> or the tender <em>Lamb Piri Tacos</em>, all crafted with a deep respect for Italian culinary traditions.
                     </p>
                     <p>
-                        Pair your meal with one of Bar Roma's creative cocktails, such as the smoky <em>Blackberry Mezcal Sour</em>, or enjoy a refreshing classic like the <em>Aperol Spritz</em>. Each bite and sip promises to transport you from Toronto to the heart of Rome, perfect for a cozy evening or special celebration.
+                        Pair your meal with one of Bar Roma is creative cocktails, such as the smoky <em>Blackberry Mezcal Sour</em>, or enjoy a refreshing classic like the <em>Aperol Spritz</em>. Each bite and sip promises to transport you from Toronto to the heart of Rome, perfect for a cozy evening or special celebration.
                     </p>
                 </div>
             </motion.div>
