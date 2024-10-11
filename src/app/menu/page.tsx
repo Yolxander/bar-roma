@@ -194,6 +194,8 @@ export default function MenuPage() {
     const [selectedCategories, setSelectedCategories] = useState<string[]>([])
     const [isMobile, setIsMobile] = useState(false)
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+    const [showMessage, setShowMessage] = useState(false)
+    const toggleMessage = () => setShowMessage(!showMessage)
 
     const genericHamburgerLine = `h-1 w-6 my-1 rounded-full bg-[#f7f0d6] transition ease transform duration-300`
     const toggleMenu = () => {
@@ -310,8 +312,8 @@ export default function MenuPage() {
                     >
                         <nav className={`flex flex-col items-center space-y-8 text-2xl ${cinzel.className}`}>
                             <Link href="/menu" className="hover:text-[#bdbca0] transition-colors" onClick={toggleMenu}>MENU</Link>
-                            <Link href="/reservations" className="hover:text-[#bdbca0] transition-colors" onClick={toggleMenu}>RESERVATIONS</Link>
-                            <Link href="/about" className="hover:text-[#bdbca0] transition-colors" onClick={toggleMenu}>ABOUT</Link>
+                            <Link href="/reservations" className="hover:text-[#bdbca0] transition-colors" onClick={toggleMessage}>RESERVATIONS</Link>
+                            <Link href="/about" className="hover:text-[#bdbca0] transition-colors" onClick={toggleMessage}>ABOUT</Link>
                         </nav>
                     </motion.div>
                 )}
