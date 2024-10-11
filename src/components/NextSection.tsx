@@ -26,7 +26,7 @@ export default function NextSection() {
                 className="max-w-4xl mx-auto text-center"
             >
                 <h2 className={`text-4xl md:text-5xl mb-8 ${cinzel.className}`}>
-                    Experience the modern twist on Roman cuisine.
+                    Discover Italian classics with a modern twist at Bar Roma.
                 </h2>
                 <div className={`text-lg  md:text-xl space-y-6 ${cormorantGaramond.className}`}>
                     <p>
