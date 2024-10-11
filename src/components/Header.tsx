@@ -17,10 +17,13 @@ interface HeaderProps {
 
 export default function Header({ toggleMenu, isMenuOpen, genericHamburgerLine }: HeaderProps) {
     const [isMenuPage, setIsMenuPage] = useState(false)
+    const [showMessage, setShowMessage] = useState(false)
 
     useEffect(() => {
         setIsMenuPage(window.location.pathname === '/menu')
     }, [])
+
+    const toggleMessage = () => setShowMessage(!showMessage)
 
     const headerStyle = isMenuPage
         ? "p-6 md:pt-[50px] md:pb-[150px] flex justify-between items-center bg-[url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202024-10-10%20at%202.06.25%E2%80%AFPM-AFl4DsWpjdsxkVRPN6cDlyuLCqL39b.png')] bg-cover bg-center text-[#f7f0d6]"
@@ -56,16 +59,17 @@ export default function Header({ toggleMenu, isMenuOpen, genericHamburgerLine }:
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.3 }}
                 >
-                    <Link href="/reservations" className="hover:text-[#bdbca0] transition-colors">RESERVATIONS</Link>
+                    <button className="hover:text-[#bdbca0] transition-colors" onClick={toggleMessage}>RESERVATIONS</button>
                 </motion.div>
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.4 }}
                 >
-                    <Link href="/about" className="hover:text-[#bdbca0] transition-colors">ABOUT</Link>
+                    <button className="hover:text-[#bdbca0] transition-colors" onClick={toggleMessage}>ABOUT</button>
                 </motion.div>
             </nav>
+
             <button
                 className="md:hidden z-50 flex flex-col h-12 w-12 justify-center items-center group"
                 onClick={toggleMenu}
@@ -91,6 +95,27 @@ export default function Header({ toggleMenu, isMenuOpen, genericHamburgerLine }:
                     }`}
                 />
             </button>
+
+            {showMessage && (
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center text-white"
+                >
+                    <div className="p-6 bg-[#333] rounded-lg text-center">
+                        <p className="text-lg mb-4">Please contact Sempre Studios to view this page content.</p>
+                        <p className="text-lg mb-4">Email: hello@semprestudios.com</p>
+                        <button
+                            className="bg-[#f7f0d6] text-black px-4 py-2 rounded"
+                            onClick={toggleMessage}
+                        >
+                            Close
+                        </button>
+                    </div>
+                </motion.div>
+            )}
         </header>
     )
 }

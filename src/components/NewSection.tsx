@@ -20,7 +20,7 @@ export default function NewSection() {
     const isInView = useInView(ref, { once: true, amount: 0.3 })
 
     return (
-        <section className="min-h-screen bg-[#42482b] text-[#f7f0d6] flex items-center pb-12">
+        <section className="min-h-screen bg-[#42482b] text-[#f7f0d6] flex items-center pb-12 py-6 md:py-0">
             <div className="container mx-auto px-4">
                 <motion.div
                     ref={ref}
