@@ -30,10 +30,10 @@ export default function NextSection() {
                 </h2>
                 <div className={`text-lg  md:text-xl space-y-6 ${cormorantGaramond.className}`}>
                     <p>
-                        Step into Bar Roma, where the heart of Italy meets modern Toronto. Enjoy a vibrant and lively dining experience with handmade pasta, wood-fired pizzas, and an extensive selection of Italian wines, all in a warm, cozy atmosphere.
+                        Step into Bar Roma, where traditional Roman flavors are reimagined with a modern twist. Savor handmade dishes like the rich and creamy <em>Cacio e Pepe</em> or the tender <em>Lamb Piri Tacos</em>, all crafted with a deep respect for Italian culinary traditions.
                     </p>
                     <p>
-                        From the rich flavors of traditional dishes like <em>Cacio e Pepe</em> to creative cocktails like the <em>Blackberry Mezcal Sour</em>, Bar Roma blends classic tastes with a contemporary flair, perfect for both casual dining and special occasions.
+                        Pair your meal with one of Bar Roma's creative cocktails, such as the smoky <em>Blackberry Mezcal Sour</em>, or enjoy a refreshing classic like the <em>Aperol Spritz</em>. Each bite and sip promises to transport you from Toronto to the heart of Rome, perfect for a cozy evening or special celebration.
                     </p>
                 </div>
             </motion.div>
