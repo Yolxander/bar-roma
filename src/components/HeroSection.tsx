@@ -54,7 +54,7 @@ export default function HeroSection({ toggleMenu, isMenuOpen, genericHamburgerLi
                         </button>
                     </motion.div>
                 </main>
-                <div className="p-6 text-center">
+                <div className="p-6 text-center hidden md:flex justify-center">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
