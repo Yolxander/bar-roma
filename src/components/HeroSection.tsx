@@ -3,8 +3,7 @@ import { ChevronDown } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { Cinzel } from 'next/font/google'
 import Header from './Header'
-import {useState, useEffect} from "react";
-import emailjs from 'emailjs-com'
+import {useState} from "react";
 
 const cinzel = Cinzel({
     subsets: ['latin'],
