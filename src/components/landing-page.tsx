@@ -50,7 +50,7 @@ export function LandingPageComponent() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: '100%' }}
                   transition={{ type: 'tween', duration: 0.3 }}
-                  className="fixed inset-0 bg-[#000000] bg-opacity-90 z-40 flex items-center justify-center"
+                  className="fixed inset-0 bg-[#000000] text-[#f7f0d6] bg-opacity-90 z-99 flex items-center justify-center"
               >
                 <nav className={`flex flex-col items-center space-y-8 text-2xl ${cinzel.className}`}>
                   <Link href="/menu" className="hover:text-[#bdbca0] transition-colors" onClick={toggleMenu}>MENU</Link>
