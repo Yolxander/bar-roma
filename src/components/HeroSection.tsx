@@ -24,7 +24,7 @@ export default function HeroSection({ toggleMenu, isMenuOpen, genericHamburgerLi
         <div className="min-h-screen bg-[url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202024-10-10%20at%202.06.42%E2%80%AFPM-ErQIjDXO6K2eGaOSUAlRlNRyApNImU.png')] bg-cover bg-center text-[#f7f0d6]">
             <div className="min-h-screen bg-[#000000] bg-opacity-50 backdrop-blur-sm flex flex-col">
                 <Header toggleMenu={toggleMenu} isMenuOpen={isMenuOpen} genericHamburgerLine={genericHamburgerLine} />
-                <main className="flex-grow flex flex-col items-center justify-center text-center px-4 md:mb-12 mb-[180px] z-1">
+                <main className="flex-grow flex flex-col items-center justify-center text-center px-4 md:mb-12 mb-[180px] z-1 ">
                     <motion.h1
                         className={`text-4xl md:text-8xl mb-6 leading-tight ${cinzel.className}`}
                         initial={{ opacity: 0, y: 20 }}
@@ -34,7 +34,7 @@ export default function HeroSection({ toggleMenu, isMenuOpen, genericHamburgerLi
                         BAR ROMA
                     </motion.h1>
                     <motion.p
-                        className="md:max-w-lg max-w-md mb-8 md:text-4xl text-[#dfddc1]"
+                        className="md:max-w-lg max-w-[90vw] mb-8 md:text-4xl text-[#dfddc1] text-[20px]"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.6 }}

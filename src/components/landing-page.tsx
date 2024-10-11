@@ -26,7 +26,7 @@ export function LandingPageComponent() {
     const genericHamburgerLine = `h-1 w-6 my-1 rounded-full bg-[#f7f0d6] transition ease transform duration-300`
 
     return (
-        <div className={`${cormorantGaramond.className}`}>
+        <div className={`${cormorantGaramond.className} text-[20px]`}>
             <HeroSection
                 toggleMenu={toggleMenu}
                 isMenuOpen={isMenuOpen}
