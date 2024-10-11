@@ -26,8 +26,8 @@ export default function Header({ toggleMenu, isMenuOpen, genericHamburgerLine }:
     const toggleMessage = () => setShowMessage(!showMessage)
 
     const headerStyle = isMenuPage
-        ? "p-6 md:pt-[50px] md:pb-[150px] flex justify-between items-center bg-[url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202024-10-10%20at%202.06.25%E2%80%AFPM-AFl4DsWpjdsxkVRPN6cDlyuLCqL39b.png')] bg-cover bg-center text-[#f7f0d6]"
-        : "p-6 flex justify-between items-center bg-transparent text-[#f7f0d6]"
+        ? " md:px-14 px-1 py-6  md:pt-[50px] md:pb-[150px] flex justify-between items-center bg-[url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202024-10-10%20at%202.06.25%E2%80%AFPM-AFl4DsWpjdsxkVRPN6cDlyuLCqL39b.png')] bg-cover bg-center text-[#f7f0d6]"
+        : " md:px-14 px-1 py-6  flex justify-between items-center bg-transparent text-[#f7f0d6]"
 
     return (
         <header className={headerStyle}>
@@ -106,6 +106,7 @@ export default function Header({ toggleMenu, isMenuOpen, genericHamburgerLine }:
                         className="fixed inset-0 bg-[#000000] text-[#f7f0d6] bg-opacity-90  flex items-center justify-center z-[100] "
                     >
                         <nav className={`flex flex-col items-center space-y-8 text-2xl ${cinzel.className}`}>
+                            <Link href="/" className="hover:text-[#bdbca0] transition-colors" onClick={toggleMenu}>HOME</Link>
                             <Link href="/menu" className="hover:text-[#bdbca0] transition-colors" onClick={toggleMenu}>MENU</Link>
                             <button className="hover:text-[#bdbca0] transition-colors" onClick={toggleMessage}>RESERVATIONS</button>
                             <button className="hover:text-[#bdbca0] transition-colors" onClick={toggleMessage}>ABOUT</button>

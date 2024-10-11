@@ -44,7 +44,6 @@ export default function Footer() {
                     <div className="text-right">
                         <p className={`mb-2 ${cinzel.className}`}>FACEBOOK</p>
                         <p className={`mb-2 ${cinzel.className}`}>INSTAGRAM</p>
-                        <p className={`${cinzel.className}`}>PINTEREST</p>
                     </div>
                 </div>
                 <div className="flex justify-between text-sm border-t border-[#000000] pt-4">
