@@ -17,11 +17,6 @@ const cormorantGaramond = Cormorant_Garamond({
     weight: ['300', '400', '500', '600', '700'],
 })
 
-const cinzel = Cinzel({
-    subsets: ['latin'],
-    weight: ['400', '700'],
-})
-
 export function LandingPageComponent() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [showMessage, setShowMessage] = useState(false)
@@ -44,24 +39,6 @@ export function LandingPageComponent() {
             <ExecutiveChef />
             <NewSection />
             <Footer />
-
-            <AnimatePresence>
-                {isMenuOpen && (
-                    <motion.div
-                        initial={{ opacity: 0, x: '100%' }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: '100%' }}
-                        transition={{ type: 'tween', duration: 0.3 }}
-                        className="fixed inset-0 bg-[#000000] text-[#f7f0d6] bg-opacity-90  flex items-center justify-center"
-                    >
-                        <nav className={`flex flex-col items-center space-y-8 text-2xl ${cinzel.className}`}>
-                            <Link href="/menu" className="hover:text-[#bdbca0] transition-colors" onClick={toggleMenu}>MENU</Link>
-                            <button className="hover:text-[#bdbca0] transition-colors" onClick={toggleMessage}>RESERVATIONS</button>
-                            <button className="hover:text-[#bdbca0] transition-colors" onClick={toggleMessage}>ABOUT</button>
-                        </nav>
-                    </motion.div>
-                )}
-            </AnimatePresence>
 
             {showMessage && (
                 <motion.div
