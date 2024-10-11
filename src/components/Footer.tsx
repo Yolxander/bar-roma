@@ -1,5 +1,4 @@
 import {useRef, useState} from 'react'
-import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
 import { Cormorant_Garamond, Cinzel } from 'next/font/google'
 
