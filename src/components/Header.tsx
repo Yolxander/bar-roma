@@ -120,7 +120,7 @@ export default function Header({ toggleMenu, isMenuOpen, genericHamburgerLine }:
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.5 }}
-                    className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center text-white"
+                    className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center text-white z-[103]"
                 >
                     <div className="p-6 bg-[#333] rounded-lg text-center">
                         <p className="text-lg mb-4">Please contact Sempre Studios to view this page content.</p>
