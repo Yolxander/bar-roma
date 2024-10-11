@@ -1,9 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import Link from 'next/link'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Cormorant_Garamond, Cinzel } from 'next/font/google'
+import { motion} from 'framer-motion'
+import { Cormorant_Garamond } from 'next/font/google'
 
 import Footer from './Footer'
 import SignatureDish from './SignatureDish'
