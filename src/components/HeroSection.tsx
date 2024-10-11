@@ -3,7 +3,8 @@ import { ChevronDown } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { Cinzel } from 'next/font/google'
 import Header from './Header'
-import {useState} from "react";
+import {useState, useEffect} from "react";
+import emailjs from 'emailjs-com'
 
 const cinzel = Cinzel({
     subsets: ['latin'],
@@ -18,6 +19,7 @@ interface HeroSectionProps {
 
 export default function HeroSection({ toggleMenu, isMenuOpen, genericHamburgerLine }: HeroSectionProps) {
     const [showMessage, setShowMessage] = useState(false)
+
 
     const toggleMessage = () => setShowMessage(!showMessage)
     return (
