@@ -31,12 +31,10 @@ export function LandingPageComponent() {
 
                 // Store the IP address in the Firestore collection 'visitor_ips'
                 await addDoc(collection(db, "visitor_ips"), {
+                    site:'Bar Roma'
                     ip: ip,
                     visitedAt: new Date(), // Store the current timestamp as well
-                    site:'Bar Roma'
                 });
-
-                console.log(ip);
 
             } catch (error) {
                 console.error("Error fetching/storing IP address:", error);
