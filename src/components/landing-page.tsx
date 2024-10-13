@@ -31,7 +31,7 @@ export function LandingPageComponent() {
 
                 // Store the IP address in the Firestore collection 'visitor_ips'
                 await addDoc(collection(db, "visitor_ips"), {
-                    site:'Bar Roma'
+                    site:'Bar Roma',
                     ip: ip,
                     visitedAt: new Date(), // Store the current timestamp as well
                 });
