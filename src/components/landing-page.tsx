@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import {useEffect, useState} from 'react'
 import { motion} from 'framer-motion'
 import { Cormorant_Garamond } from 'next/font/google'
 
@@ -10,6 +10,8 @@ import ExecutiveChef from './ExecutiveChef'
 import NewSection from './NewSection'
 import NextSection from './NextSection'
 import HeroSection from './HeroSection'
+import { db } from "@/firebase";
+import { collection, addDoc } from "firebase/firestore";
 
 const cormorantGaramond = Cormorant_Garamond({
     subsets: ['latin'],
@@ -20,10 +22,34 @@ export function LandingPageComponent() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [showMessage, setShowMessage] = useState(false)
 
+    useEffect(() => {
+        const fetchIPAndStore = async () => {
+            try {
+                // Fetch the user's IP address using ipify API
+                const res = await fetch("https://api.ipify.org?format=json");
+                const { ip } = await res.json();
+
+                // Store the IP address in the Firestore collection 'visitor_ips'
+                await addDoc(collection(db, "visitor_ips"), {
+                    ip: ip,
+                    visitedAt: new Date(), // Store the current timestamp as well
+                    site:'Bar Roma'
+                });
+
+                console.log(ip);
+
+            } catch (error) {
+                console.error("Error fetching/storing IP address:", error);
+            }
+        };
+
+        fetchIPAndStore();
+    }, []); // Runs only once when the component is mounted
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
     const toggleMessage = () => setShowMessage(!showMessage)
 
     const genericHamburgerLine = `h-1 w-6 my-1 rounded-full bg-[#f7f0d6] transition ease transform duration-300`
+
 
     return (
         <div className={`${cormorantGaramond.className} text-[20px]`}>
